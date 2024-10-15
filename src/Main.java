@@ -2,34 +2,35 @@ import java.util.Scanner;
 
 public class Main {
 //    public static void main(String[] args) {
-//        System.out.println("Hello world!");
+//        System.out.print("Hello world! ");
 //
 //        Scanner scanner = new Scanner(System.in);
 //
-//        System.out.println("Hello! My name is Helpy");
+//        System.out.println("My name is Helpy!");
 //        System.out.println("I was created in 2024.");
-////        System.out.println("Please, remind me your name.");
-////
-////        String name = scanner.nextLine();
-////
-////        System.out.println("What a great name you have, " + name + "!");
-////        System.out.println("Let me guess your age.");
-////        System.out.println("Enter remainders of dividing your age by 3, 5 and 7.");
-////
-////        int rem3 = scanner.nextInt();
-////        int rem5 = scanner.nextInt();
-////        int rem7 = scanner.nextInt();
-////
-////        int age = (rem3 * 70 + rem5 * 21 + rem7 * 15) % 105;
-////
-////        System.out.println("Your age is " + age + "; that's a good time to start programming!");
+//        System.out.println("Please, remind me your name.");
+//
+//        String name = scanner.nextLine();
+//
+//        System.out.println("What a great name you have, " + name + "!");
+//        System.out.println("Let me guess your age.");
+//        System.out.println("Enter remainders of dividing your age by 3, 5 and 7.");
+//
+//        int rem3 = scanner.nextInt();
+//        int rem5 = scanner.nextInt();
+//        int rem7 = scanner.nextInt();
+//
+//        int age = (rem3 * 70 + rem5 * 21 + rem7 * 15) % 105;
+//
+//        System.out.println("Your age is " + age + "; that's a good time to start programming!");
 //
 //        String answere;
 //        do{
 //            System.out.println("Let's test your BMI index!");
-//            System.out.println("Enter your height:");
+//            System.out.println("Enter your height in cm:");
 //            double height = scanner.nextDouble();
-//
+//            // convert cm to m
+//            height = height / 100;
 //            System.out.println("Enter your weight:");
 //            double weight = scanner.nextDouble();
 //
