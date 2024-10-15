@@ -21,12 +21,13 @@ public class MedicalChatBotHelpy {
             System.out.println("|  1 | I have a headache            |");
             System.out.println("|  2 | I have a cough               |");
             System.out.println("|  3 | I feel dizzy                 |");
-            System.out.println("|  4 | I don't know why I'm here    |");
-            System.out.println("|  5 | What is Health IT Academy?   |");
-            System.out.println("|  6 | Why is the sky blue?         |");
-            System.out.println("|  7 | Why does this program exist? |");
+            System.out.println("|  4 | Calorie Calculator           |");
+            System.out.println("|  5 | I don't know why I'm here    |");
+            System.out.println("|  6 | What is Health IT Academy?   |");
+            System.out.println("|  7 | Why is the sky blue?         |");
+            System.out.println("|  8 | Why does this program exist? |");
             System.out.println("+----+------------------------------+");
-            System.out.println("|  8 | Exit program                 |");
+            System.out.println("|  9 | Exit program                 |");
             System.out.println("+----+------------------------------+");
 
             System.out.println("Please enter the number corresponding to your symptom or question:");
@@ -54,10 +55,10 @@ public class MedicalChatBotHelpy {
                 userInput = Integer.parseInt(input); // Convert input to integer
 
                 // Check if user selected to exit
-                if (userInput == 8) {
+                if (userInput == 9) {
                     System.out.println("Thank you for using Helpy medical assistance bot! Have a nice day!");
                     validInput = true; // Exit the loop
-                } else if (userInput >= 1 && userInput <= 7) {
+                } else if (userInput >= 1 && userInput <= 8) {
                     // Valid symptom option
                     System.out.println("You selected option: " + userInput);
 
@@ -195,15 +196,73 @@ public class MedicalChatBotHelpy {
                             }
                             break;
                         case 4:
-                            System.out.println("Nobody knows! Have a nice day!");
+                            // Step 1: Ask for user details
+                            System.out.println("Welcome to the Calorie Calculator to help with weight loss!");
+                            System.out.print("Please enter your age (in years): ");
+                            int age = scanner.nextInt();
+
+                            System.out.print("Please enter your weight (in kilograms): ");
+                            double weight = scanner.nextDouble();
+
+                            System.out.print("Please enter your height (in centimeters): ");
+                            int height = scanner.nextInt();
+
+                            // Gender selection
+                            System.out.print("Please enter your gender (M for male, F for female): ");
+                            String gender = scanner.next();
+
+                            // Activity level selection
+                            System.out.println("Please select your activity level:");
+                            System.out.println("1. Sedentary (little or no exercise)");
+                            System.out.println("2. Lightly active (light exercise 1-3 days per week)");
+                            System.out.println("3. Moderately active (moderate exercise 3-5 days per week)");
+                            System.out.println("4. Very active (hard exercise 6-7 days per week)");
+                            System.out.println("5. Super active (very hard exercise, physical job)");
+                            int activityLevel = scanner.nextInt();
+                            scanner.nextLine(); // Consume the newline character
+
+                            // Step 2: Calculate BMR based on gender
+                            double BMR;
+                            if (gender.equalsIgnoreCase("M")) {
+                                BMR = 10 * weight + 6.25 * height - 5 * age + 5;
+                            } else if (gender.equalsIgnoreCase("F")) {
+                                BMR = 10 * weight + 6.25 * height - 5 * age - 161;
+                            } else {
+                                System.out.println("Invalid gender input. Please restart the program.");
+                                return;
+                            }
+
+                            // Step 3: Adjust BMR based on activity level
+                            double adjustedBMR = BMR;
+                            switch (activityLevel) {
+                                case 1: adjustedBMR *= 1.2; break;
+                                case 2: adjustedBMR *= 1.375; break;
+                                case 3: adjustedBMR *= 1.55; break;
+                                case 4: adjustedBMR *= 1.725; break;
+                                case 5: adjustedBMR *= 1.9; break;
+                                default:
+                                    System.out.println("Invalid activity level. Please restart the program.");
+                                    return;
+                            }
+
+                            // Step 4: Suggest daily calorie intake for weight loss (500 calorie deficit)
+                            double calorieIntakeForWeightLoss = adjustedBMR - 500;
+
+                            // Output the results
+                            System.out.println("\nYour Basal Metabolic Rate (BMR) is: " + String.format("%.2f", BMR) + " calories.");
+                            System.out.println("Your adjusted BMR based on activity level is: " + String.format("%.2f", adjustedBMR) + " calories.");
+                            System.out.println("To lose weight, you should aim to consume around " + String.format("%.2f", calorieIntakeForWeightLoss) + " calories per day.");
                             break;
                         case 5:
-                            System.out.println("Health IT Academy is an educational program, \na platform, or an initiative that focuses on information technology in healthcare. \nThe program offers courses and training on various aspects of IT in the healthcare industry.");
+                            System.out.println("Nobody knows! Have a nice day!");
                             break;
                         case 6:
-                            System.out.println("The sky appears blue primarily due to a phenomenon known as Rayleigh scattering. \nBut I doubt that you actually care!");
+                            System.out.println("Health IT Academy is an educational program, \na platform, or an initiative that focuses on information technology in healthcare. \nThe program offers courses and training on various aspects of IT in the healthcare industry.");
                             break;
                         case 7:
+                            System.out.println("The sky appears blue primarily due to a phenomenon known as Rayleigh scattering. \nBut I doubt that you actually care!");
+                            break;
+                        case 8:
                             System.out.println("This program exists for educational purposes and of course for FUN!!");
                             break;
                         default:
@@ -226,7 +285,7 @@ public class MedicalChatBotHelpy {
             }
 
             // Reset validInput for the next iteration if user hasn't exited
-            if (userInput != 8) {
+            if (userInput != 9) {
                 validInput = false; // Continue looping until a valid exit command is received
             }
 
