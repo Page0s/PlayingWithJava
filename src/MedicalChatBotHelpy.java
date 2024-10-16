@@ -12,7 +12,7 @@ public class MedicalChatBotHelpy {
         do {
             // Paint the walls
             String marker = "@@";
-            for (int i = 0; i < 18; ++i){
+            for (int i = 0; i < 18; ++i) {
                 System.out.println(marker);
                 marker += "@@";
             }
